@@ -12,37 +12,42 @@ import java.util.stream.Collectors;
 public class Test {
 	public static void main(String[] args)
 			throws IllegalAccessException, IllegalArgumentException, NoSuchFieldException, SecurityException {
-		Student s1 = new Student();
-		s1.setName("Krishna");
-		s1.setAge(30);
-		Address address = new Address();
-		s1.setAddress(address);
-		s1.getAddress().setHno("2-2-22");
-		s1.getAddress().setStreet("somewhere");
-		s1.getAddress().setPin(123);
-
-		Student s2 = new Student();
-		s2.setName("Krishna");
-		s2.setAge(20);
-		address = new Address();
-		s2.setAddress(address);
-		s2.getAddress().setHno("1-1-11");
-		s2.getAddress().setStreet("nowhere");
-		s2.getAddress().setPin(123);
-		Student s3 = new Student();
-		s3.setName("Krishna");
-		s3.setAge(20);
-		address = new Address();
-		s3.setAddress(address);
-		s3.getAddress().setHno("1-1-11");
-		s3.getAddress().setStreet("nowhere");
-		s3.getAddress().setPin(123);
-		List<Student> studentList=new ArrayList<>();
-		studentList.add(s2);
-		studentList.add(s3);
-		studentList.add(s1);
-		test(studentList);
+//		Student s1 = new Student();
+//		s1.setName("Krishna");
+//		s1.setAge(30);
+//		Address address = new Address();
+//		s1.setAddress(address);
+//		s1.getAddress().setHno("2-2-22");
+//		s1.getAddress().setStreet("somewhere");
+//		s1.getAddress().setPin(123);
+//
+//		Student s2 = new Student();
+//		s2.setName("Krishna");
+//		s2.setAge(20);
+//		address = new Address();
+//		s2.setAddress(address);
+//		s2.getAddress().setHno("1-1-11");
+//		s2.getAddress().setStreet("nowhere");
+//		s2.getAddress().setPin(123);
+//		Student s3 = new Student();
+//		s3.setName("Krishna");
+//		s3.setAge(20);
+//		address = new Address();
+//		s3.setAddress(address);
+//		s3.getAddress().setHno("1-1-11");
+//		s3.getAddress().setStreet("nowhere");
+//		s3.getAddress().setPin(123);
+//		List<Student> studentList=new ArrayList<>();
+//		studentList.add(s2);
+//		studentList.add(s3);
+//		studentList.add(s1);
+//		test(studentList);
+		
+		 /* Start with the empty list. */
+        MyLinkedList list = new MyLinkedList(); 
 	}
+	
+
 
 	private static Student test(List<Student> studentList) {
 //		  System.out.println(empList.stream().collect(Collectors.groupingBy(employee -> employee.getName(),Collectors.counting())));
@@ -189,4 +194,41 @@ class Address {
 		super();
 	}
 
+}
+
+
+
+class MyLinkedList{
+	private Node head; //head of list
+	
+	/*linked list node*/
+	static class Node{
+		int data;
+		// Constructor to create a new node
+        // Next is by default initialized
+        // as null
+        Node(int d) { data = d; }
+		Node next;
+	}
+	
+	public MyLinkedList insert(MyLinkedList list,int data) {
+		// Create a new node with given data 
+		  Node new_node = new Node(data); 
+		  
+		  // If the Linked List is empty, 
+	        // then make the new node as head 
+		  if (list.head == null) { 
+			  list.head = new_node; 
+		  } else { 
+	            // Else traverse till the last node 
+	            // and insert the new_node there
+			  Node last = list.head; 
+			  while (last.next != null) { 
+				  last = last.next; 
+			  }
+			  // Insert the new_node at last node 
+	            last.next = new_node; 
+		  }
+		return list;
+	}
 }
